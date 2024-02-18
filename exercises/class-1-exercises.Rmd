@@ -83,17 +83,54 @@ mtext("20 points")
 
 2M1.
 
+2M1. Recall the globe tossing model from the chapter. Compute and plot the grid approximate posterior distribution for each of the following sets of observations. In each case, assume a uniform prior for p.
+(1) W,W,W
+(2) W,W,W,L
+(3) L,W,W,L,W,W,W
+
 ```{r}
 
 # Write your code here.
+p_grid = seq(from = 0, to = 1, length.out=20)
+
+# define prior
+prior = rep(1, 20)
+
+# compute likelihood at each value in grid
+likelihood = dbinom(4, size = 7, prob = p_grid)
+
+# compute product of likelihood and prior
+unstd.posterior = likelihood * prior
+
+# standardize the posterior so it sums to 1
+posterior = unstd.posterior / sum(unstd.posterior)
+
+# plot the distribution
+plot(p_grid, posterior, type = "b",
+     xlab = "probability of water", ylab = "posterior_probability")
+mtext("20 points")
+
 
 ```
 
 2M2.
+Now assume a prior for p that is equal to zero when p < 0.5 and is a positive constant when p ≥ 0.5. Again compute and plot the grid approximate posterior distribution for each of the sets of observations in the problem just above.
 
 ```{r}
 
 # In the book, McElreath says that we can do much better than choosing a uniform prior for estimating the coverage of water. Is this what we are doing here? How does that impact our estimation?
+prob_vec <- seq(from = 0, to = 1, length.out = 20)
+
+prior_vec <- ifelse(p_grid < 0.5 , 0 , 0.6 )
+
+likelihood <- dbinom(3, size = 4, prob = prob_vec)
+
+unstd.posterior = prior_vec * likelihood
+
+
+posterior = unstd.posterior / sum(posterior)
+
+plot(prob_vec, posterior, type = "b")
 
 ```
 
