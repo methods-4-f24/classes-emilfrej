@@ -127,7 +127,6 @@ likelihood <- dbinom(3, size = 4, prob = prob_vec)
 
 unstd.posterior = prior_vec * likelihood
 
-
 posterior = unstd.posterior / sum(posterior)
 
 plot(prob_vec, posterior, type = "b")
@@ -137,8 +136,9 @@ plot(prob_vec, posterior, type = "b")
 2M3.
 
 ```{r}
-
 # Use the Bayes formula!
+# Write your probability here.
+p = 0.3 * 0.5 / (0.3*0.5 + 1*0.5)
 
 ```
 
@@ -148,7 +148,8 @@ For the exercises below, I highly suggest you to grab a piece of paper and try t
 
 ```{r}
 
-# Write your probability here.
+
+
 
 ```
 
