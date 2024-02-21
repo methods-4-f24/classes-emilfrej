@@ -311,7 +311,7 @@ predictions_firstborns = rbinom(1e4, 100, samples)
 
 #plot the predictions against the observated number of births
 dens(predictions_firstborns)
-abline(abline( v=sum(birth1) , lty=2 ))
+abline(abline( v=sum(birth1) , lty=2))
 ```
 *We predict more boys than observed.*
 
